@@ -2,6 +2,8 @@
 
 # jetbrains files
 /.idea
+/frontend/.idea
+/backend/.idea
 
 # dependencies
 /node_modules
