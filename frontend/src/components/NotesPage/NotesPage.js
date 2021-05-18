@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Note from "../Note/Note";
 
 const NotesPage = (props) => {
     let newNote = {
@@ -32,6 +33,10 @@ const NotesPage = (props) => {
     };
 
     const handleRemove = (id, event) => {
+        if(!notesList) {
+            return
+        }
+
         notesList[id].status = "CLOSED";
 
         updateNotesList(notesList => [...notesList])
@@ -45,20 +50,7 @@ const NotesPage = (props) => {
         return notesList.filter(note => note.status === "OPEN")
             .map(note => {
                 return (
-                    <div key={note.id}>
-                        <button
-                            className=""
-                            onClick={(event) => handleRemove(note.id, event)}
-                        >
-                            Remove
-                        </button>
-                        <p>
-                            {note.content}
-                        </p>
-                        <a href={note.id} className="">
-                            {note.date}
-                        </a>
-                    </div>
+                    <Note note={note} onClick={handleRemove}/>
                 );
             });
     }
