@@ -3,9 +3,9 @@
     "server-dependencies": "cd backend && npm i",
     "client-dependencies": "cd frontend && npm i",
     "install-dependencies": "concurrently \"npm run server-dependencies\" \"npm run client-dependencies\"",
-    "client": "cd frontend && npm run start ",
-    "server": "cd backend && npm run start",
-    "dev": "concurrently \"npm run server\" \"npm run client\" "
+    "client-dev": "cd frontend && npm run start ",
+    "server-dev": "cd backend && npm run start",
+    "dev": "concurrently \"npm run server-dev\" \"npm run client-dev\" "
   },
   "dependencies": {
     "concurrently": "^6.1.0"
