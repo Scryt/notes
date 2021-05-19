@@ -1,8 +1,8 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Note from "../Note/Note";
 
-const NotesPage = (props) => {
-    let newNote = {
+const NotesPage = () => {
+    const newNote = {
         content: '',
         status: 'OPEN'
     };
@@ -32,19 +32,28 @@ const NotesPage = (props) => {
         }]);
     };
 
-    const handleRemove = (id, event) => {
+    useEffect(()=> {
+        if (notesList.length > 0) {
+            window.localStorage.setItem('notesList', JSON.stringify(notesList))
+        }
+    }, [notesList]);
+
+    useEffect(() => {
+        updateNotesList(JSON.parse(window.localStorage.getItem('notesList')));
+    },  []);
+
+    const handleRemove = (id) => {
         if(!notesList) {
             return
         }
 
         notesList[id].status = "CLOSED";
-
-        updateNotesList(notesList => [...notesList])
-    }
+        updateNotesList(notesList => [...notesList]);
+    };
 
     const NotesList = () => {
         if (!notesList || notesList.length === 0) {
-            return <div>No Notes?</div>
+            return <div>No Notes :(</div>
         }
 
         return notesList.filter(note => note.status === "OPEN")
@@ -53,7 +62,7 @@ const NotesPage = (props) => {
                     <Note note={note} onClick={handleRemove}/>
                 );
             });
-    }
+    };
 
     return (
         <div>
@@ -69,7 +78,7 @@ const NotesPage = (props) => {
                     Add Note
                 </button>
             </form>
-            <div>
+            <div className="">
                 <NotesList/>
             </div>
         </div>
