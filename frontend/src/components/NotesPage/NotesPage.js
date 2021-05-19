@@ -24,6 +24,7 @@ const NotesPage = () => {
             id = notesList.length;
         }
 
+        //TODO add date format
         updateNotesList(notesList => [...notesList, {
             id: id,
             content: note.content,
@@ -32,7 +33,7 @@ const NotesPage = () => {
         }]);
     };
 
-    useEffect(()=> {
+    useEffect(() => {
         if (notesList.length > 0) {
             window.localStorage.setItem('notesList', JSON.stringify(notesList))
         }
@@ -40,10 +41,10 @@ const NotesPage = () => {
 
     useEffect(() => {
         updateNotesList(JSON.parse(window.localStorage.getItem('notesList')));
-    },  []);
+    }, []);
 
     const handleRemove = (id) => {
-        if(!notesList) {
+        if (!notesList) {
             return
         }
 
@@ -56,6 +57,8 @@ const NotesPage = () => {
             return <div>No Notes :(</div>
         }
 
+        //TODO throws warning for not unique keys, although list does not contains duplicated record
+        // -- needs to be fixed
         return notesList.filter(note => note.status === "OPEN")
             .map(note => {
                 return (
