@@ -1,9 +1,9 @@
-import './Header.module.scss'
+import style from './Header.module.scss'
 
 const Header = () => {
     return (
-        <div >
-            Notes
+        <div className={style.header}>
+            <h2>Notes</h2>
         </div>
     )
 }

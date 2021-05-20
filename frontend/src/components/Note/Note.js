@@ -60,7 +60,7 @@ const Note = (props) => {
     return (
         <div className={style.note} key={note.id}>
             {!props.note && <GoBackButton/>}
-            <div className="container">
+            <div className="container-row">
                 <p className={style.noteContent}>
                     {note.content}
                 </p>

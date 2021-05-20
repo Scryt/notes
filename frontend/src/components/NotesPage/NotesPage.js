@@ -72,8 +72,8 @@ const NotesPage = () => {
     };
 
     return (
-        <div>
-            <div className="container">
+        <div className="container-column, note-container">
+            <div className="container-column">
                 <form className="addNoteForm" onSubmit={handleAddNote}>
                     <textarea
                         className="noteContentInput"
