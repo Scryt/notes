@@ -1,3 +1,4 @@
+import './NotesPage.modules.scss'
 import {useState, useEffect} from "react";
 import Note from "../Note/Note";
 
@@ -24,24 +25,14 @@ const NotesPage = () => {
             id = notesList.length;
         }
 
-        //TODO add date format
+        const noteCreateDate = new Date
         updateNotesList(notesList => [...notesList, {
             id: id,
             content: note.content,
-            date: Date.now(),
+            date: noteCreateDate.toISOString().replace(/T/, ' ').replace(/\.\d{3}Z$/, ''),
             status: "OPEN"
         }]);
     };
-
-    useEffect(() => {
-        if (notesList.length > 0) {
-            window.localStorage.setItem('notesList', JSON.stringify(notesList))
-        }
-    }, [notesList]);
-
-    useEffect(() => {
-        updateNotesList(JSON.parse(window.localStorage.getItem('notesList')));
-    }, []);
 
     const handleRemove = (id) => {
         if (!notesList) {
@@ -51,6 +42,19 @@ const NotesPage = () => {
         notesList[id].status = "CLOSED";
         updateNotesList(notesList => [...notesList]);
     };
+
+    useEffect(() => {
+        if (notesList !== null && notesList.length !== 0) {
+            window.localStorage.setItem('notesList', JSON.stringify(notesList))
+        }
+    }, [notesList]);
+
+    useEffect(() => {
+        const notes = JSON.parse(window.localStorage.getItem('notesList'));
+        if (notes !== null) {
+            updateNotesList(notes);
+        }
+    }, []);
 
     const NotesList = () => {
         if (!notesList || notesList.length === 0) {
@@ -69,19 +73,22 @@ const NotesPage = () => {
 
     return (
         <div>
-            <form className='' onSubmit={handleAddNote}>
-                <input
-                    type="text"
-                    name="content"
-                    value={note.content}
-                    onChange={handleInputChange}
-                    required
-                />
-                <button className="" type="submit">
-                    Add Note
-                </button>
-            </form>
-            <div className="">
+            <div className="container">
+                <form className="addNoteForm" onSubmit={handleAddNote}>
+                    <textarea
+                        className="noteContentInput"
+                        name="content"
+                        value={note.content}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <button className="" type="submit">
+                        Add Note
+                    </button>
+                </form>
+            </div>
+            <div className="notes">
+                <h1>Latest notes</h1>
                 <NotesList/>
             </div>
         </div>

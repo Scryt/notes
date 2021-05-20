@@ -1,3 +1,4 @@
+import Header from "../components/Header/Header"
 import NotesPage from "../components/NotesPage/NotesPage";
 import Note from "../components/Note/Note";
 import PageNotFound from "../components/PageNotFound/PageNotFound"
@@ -5,6 +6,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 const AppRoutes = () => (
       <BrowserRouter>
+          <Header/>
           <Switch>
               <Route path="/" component={NotesPage} exact={true}/>
               <Route path={"/:id"} component={Note} exact={true}/>

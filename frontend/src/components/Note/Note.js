@@ -1,5 +1,7 @@
-// import style from './Note.module.scss'
+import style from './Note.module.scss'
 
+//TODO this component serves two functions which are different in some ways
+//  - splitting/adjusting might be required
 const Note = (props) => {
     let note = {}
     if (!props.note) {
@@ -17,43 +19,54 @@ const Note = (props) => {
     const DisplayDate = () => {
         if (props.note) {
             return (
-                <a href={note.id} className="">
+                <a href={note.id} className={style.noteDate}>
                     {note.date}
                 </a>
             )
-        } else {
-            return (
-                <p>
-                    {note.date}
-                </p>
-            )
         }
+
+        return (
+            <p className={style.noteDate}>
+                {note.date}
+            </p>
+        )
     }
 
-    // TODO handle remove
-    const ActionButton = () => {
-        if (props.note) {
-            return (
+    const GoBackButton = () => {
+        return (
+            <a href="/" className={style.goBackButton}> go back </a>
+        )
+    };
+
+    const RemoveButton = () => {
+        return (
+            (
+                // TODO handle remove
+                //      As this function is passed from parent it cannot be accessed here while displaying single note
+                // One way would be to include remove handler here (not in parent)
+                //      although I do not like the idea of changing lists in several places as it will split usage of add/remove
+                // Second way would be to extract handler to different file and not pass it at all, and split component into 2
+                //      display single and display n components
                 <button
-                    className=""
+                    className={style.removeButton}
                     onClick={(event) => props.onClick(note.id, event)}
                 >
                     Remove
                 </button>
             )
-        } else {
-            return (
-                <button> go back </button>
-            )
-        }
-    }
+        )
+    };
 
     return (
-        <div key={note.id}>
-            <ActionButton/>
-            <p>
-                {note.content}
-            </p>
+        <div className={style.note} key={note.id}>
+            {!props.note && <GoBackButton/>}
+            <div className="container">
+                <p className={style.noteContent}>
+                    {note.content}
+                </p>
+                {props.note && <RemoveButton/>}
+            </div>
+
             <DisplayDate/>
         </div>
     );

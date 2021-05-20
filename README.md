@@ -35,7 +35,7 @@ Runs the server in the development mode.
 
 
 
-## Known error/warnings/missing features
+## Known errors/warnings/missing features
 
 ### 1. Warning is thrown in NotesList using
 
