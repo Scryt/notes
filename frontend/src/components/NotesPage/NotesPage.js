@@ -25,6 +25,7 @@ const NotesPage = () => {
             id = notesList.length;
         }
 
+        //Library can be used instead of the regexp in data
         const noteCreateDate = new Date
         updateNotesList(notesList => [...notesList, {
             id: id,

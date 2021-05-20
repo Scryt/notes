@@ -47,10 +47,11 @@ Although I did not find any possibility for the function to pass duplicated key.
 
 Has been marked as TODO
 
-### 3. On single note there is no possibility to remove a note.
+### 2. After removing a single note user should be notified or moved to previous page
 
 Has been marked as TODO
 
-### 4. It is possible to access note which has been "closed" by providing it's ID in the link
+
+### 3. It is possible to access note which has been "closed" by providing it's ID in the link
 
 Has been considered as feature
