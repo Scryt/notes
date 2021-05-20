@@ -1,6 +1,6 @@
 import Header from "../components/Header/Header"
 import NotesPage from "../components/NotesPage/NotesPage";
-import SingleNote from "../components/SingleNote/Note";
+import SingleNote from "../components/SingleNote/SingleNote";
 import PageNotFound from "../components/PageNotFound/PageNotFound"
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
