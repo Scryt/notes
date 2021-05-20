@@ -1,0 +1,54 @@
+.note {
+  padding: 15px;
+  margin: 15px;
+  width: 100%;
+
+  background-color: #d9d9d9;
+}
+
+.noteContent {
+  font-size: 2em;
+  margin: 0 10px;
+
+  width: 95%;
+  height: auto;
+  min-height: 100px;
+
+  word-break: break-word;
+}
+
+a.noteDate {
+  font-size: 2em;
+}
+
+.noteDate {
+  padding: 15px;
+}
+
+.removeButton {
+  background-color: #c30d0d;
+  color: white;
+}
+
+.goBackButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2em;
+  height: 10px;
+  margin: 20px;
+  padding: 15px;
+
+  border-radius: 5px;
+  border: 1px solid #999999;
+
+  cursor: pointer;
+  color: #1a1a1a;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
