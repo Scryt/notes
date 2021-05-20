@@ -1,5 +1,4 @@
 import style from './SingleNote.module.scss'
-// import RemoveHandler from
 
 const SingleNote = (props) => {
     const id = parseInt(props.location.pathname.substring(1));
@@ -23,6 +22,7 @@ const SingleNote = (props) => {
             <div className={style.note} key={note.id}>
                 <div className={style.actionButtons}>
                     <a href="/" className={style.goBackButton}> Go back </a>
+
                     <button
                         className={style.removeButton}
                         onClick={(event) => handleRemove(note.id, event)}
@@ -35,8 +35,8 @@ const SingleNote = (props) => {
                     <p className={style.noteContent}>
                         {note.content}
                     </p>
-
                 </div>
+
                 <p className={style.noteDate}>
                     {note.date}
                 </p>
