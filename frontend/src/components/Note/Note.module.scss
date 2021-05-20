@@ -8,9 +8,11 @@
 
 .noteContent {
   font-size: 2em;
+  margin: 0 10px;
 
-  width: 100%;
+  width: 95%;
   height: auto;
+  min-height: 100px;
 
   word-break: break-word;
 }
